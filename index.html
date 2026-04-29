@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diseña y Crea Print – Hacemos realidad lo que puedas imaginar</title>
+<meta name="description" content="Imprenta creativa en México. Lonas personalizadas, playeras DTF, tazas sublimadas, stickers con Cricut, corte de vinil y más. Cotiza sin compromiso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --orange: #F47B20;
+  --blue: #29ABE2;
+  --purple: #9B59B6;
+  --pink: #E91E8C;
+  --teal: #00BCD4;
+  --yellow: #F7C948;
+  --dark: #0a0a0a;
+  --dark2: #0d0d0d;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--dark);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 2.5rem;
+  background: rgba(10,10,10,0.93);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 0.6rem; }
+.nav-logo-dc {
+  font-family: 'Pacifico', cursive; font-size: 1.6rem;
+  background: linear-gradient(135deg, var(--orange), var(--blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.nav-logo-sub {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  padding-left: 0.6rem; border-left: 1px solid rgba(255,255,255,0.12);
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: rgba(255,255,255,0.5);
+  font-weight: 600; font-size: 0.88rem; transition: color 0.2s;
+}
+.nav-links a:hover { color: white; }
+.nav-cta {
+  background: var(--orange) !important; color: white !important;
+  padding: 0.5rem 1.3rem; border-radius: 50px;
+  font-weight: 700 !important; transition: transform 0.2s, box-shadow 0.2s;
+}
+.nav-cta:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 24px rgba(244,123,32,0.45) !important; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 8rem 2.5rem 5rem; position: relative; overflow: hidden;
+}
+.hero-glow { position: absolute; inset: 0; pointer-events: none; }
+.glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.12; }
+.g1 { width: 600px; height: 600px; background: var(--orange); top: -150px; right: -100px; }
+.g2 { width: 500px; height: 500px; background: var(--blue); bottom: -100px; left: -100px; }
+.g3 { width: 300px; height: 300px; background: var(--purple); top: 50%; left: 45%; }
+
+.hero-inner {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 3rem; max-width: 1100px; margin: 0 auto; width: 100%;
+}
+.hero-content { max-width: 600px; }
+.brand-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.12); border-radius: 50px;
+  padding: 0.4rem 1rem; font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 1px; color: rgba(255,255,255,0.5);
+  text-transform: uppercase; margin-bottom: 1.8rem;
+}
+.dot-live { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: blink 1.8s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero-title { font-family: 'Pacifico', cursive; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 0.5rem; }
+.dc-orange { color: var(--orange); }
+.dc-blue   { color: var(--blue); }
+.hero-print { font-family: 'Nunito', sans-serif; font-size: 0.42em; font-weight: 900; letter-spacing: 5px; vertical-align: middle; margin-left: 0.4em; color: var(--orange); }
+
+.hero-tagline {
+  font-size: clamp(0.9rem, 2vw, 1.15rem); font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--purple), var(--teal), var(--pink), var(--orange));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 2.5rem; max-width: 500px; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary { background: var(--orange); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(244,123,32,0.4); }
+.btn-ghost { background: transparent; color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
+.btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-3px); }
+
+/* ORBIT */
+.hero-orbit { position: relative; width: 280px; height: 280px; flex-shrink: 0; }
+@media(max-width: 860px) { .hero-orbit { display: none; } }
+.orbit-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 90px; height: 90px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+.orbit-item { position: absolute; width: 54px; height: 54px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; animation: floatUD 3s ease-in-out infinite; }
+.orbit-item:nth-child(2) { top:0; left:50%; transform:translateX(-50%); background:rgba(244,123,32,0.2); border:1px solid rgba(244,123,32,0.3); }
+.orbit-item:nth-child(3) { top:50%; right:0; transform:translateY(-50%); background:rgba(41,171,226,0.2); border:1px solid rgba(41,171,226,0.3); animation-delay:.5s; animation-name:floatLR; }
+.orbit-item:nth-child(4) { bottom:0; left:50%; transform:translateX(-50%); background:rgba(155,89,182,0.2); border:1px solid rgba(155,89,182,0.3); animation-delay:1s; }
+.orbit-item:nth-child(5) { top:50%; left:0; transform:translateY(-50%); background:rgba(0,188,212,0.2); border:1px solid rgba(0,188,212,0.3); animation-delay:1.5s; animation-name:floatLR; }
+.orbit-item:nth-child(6) { top:14%; right:14%; background:rgba(233,30,140,0.2); border:1px solid rgba(233,30,140,0.3); animation-delay:.7s; animation-name:floatDiag; }
+.orbit-item:nth-child(7) { bottom:14%; left:14%; background:rgba(247,201,72,0.2); border:1px solid rgba(247,201,72,0.3); animation-delay:1.2s; animation-name:floatDiag; }
+@keyframes floatUD   { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-9px)} }
+@keyframes floatLR   { 0%,100%{transform:translateY(-50%) translateX(0)} 50%{transform:translateY(-50%) translateX(-8px)} }
+@keyframes floatDiag { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-5px,-6px)} }
+
+/* COLOR BAR */
+.color-bar { height: 4px; background: linear-gradient(90deg, var(--purple), var(--blue), var(--teal), var(--orange), var(--pink), var(--yellow)); }
+
+/* SECTIONS */
+section { padding: 5rem 2.5rem; }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.stag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.8rem; }
+.section-header h2 { font-family: 'Pacifico', cursive; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem; color: white; }
+.section-header p { color: rgba(255,255,255,0.4); font-size: 1rem; max-width: 480px; margin: 0 auto; line-height: 1.7; }
+
+/* PRODUCTS */
+#productos { background: var(--dark2); }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; max-width: 1100px; margin: 0 auto; }
+.pcard { border-radius: 20px; padding: 1.8rem; border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); position: relative; overflow: hidden; transition: transform 0.3s, border-color 0.3s; cursor: default; }
+.pcard:hover { transform: translateY(-6px); }
+.pcard.c1:hover { border-color: var(--orange); }
+.pcard.c2:hover { border-color: var(--blue); }
+.pcard.c3:hover { border-color: var(--purple); }
+.pcard.c4:hover { border-color: var(--teal); }
+.pcard.c5:hover { border-color: var(--pink); }
+.pcard.c6:hover { border-color: var(--yellow); }
+.pcard-glow { position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; border-radius: 50%; filter: blur(40px); opacity: 0.18; }
+.c1 .pcard-glow { background: var(--orange); }
+.c2 .pcard-glow { background: var(--blue); }
+.c3 .pcard-glow { background: var(--purple); }
+.c4 .pcard-glow { background: var(--teal); }
+.c5 .pcard-glow { background: var(--pink); }
+.c6 .pcard-glow { background: var(--yellow); }
+.pcard-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.pbadge { position: absolute; top: 1.2rem; right: 1.2rem; font-size: 0.65rem; font-weight: 700; padding: 0.3rem 0.7rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
+.badge-hot { background: var(--orange); color: white; }
+.badge-new { background: var(--teal); color: #0a0a0a; }
+.badge-top { background: var(--purple); color: white; }
+.pcard h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+.pcard p  { font-size: 0.88rem; color: rgba(255,255,255,0.38); line-height: 1.6; }
+
+/* WHY */
+#porque { background: var(--dark); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 1000px; margin: 0 auto; }
+.why-item { text-align: center; padding: 2rem 1.2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, border-color 0.3s; }
+.why-item:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.14); }
+.why-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1.2rem; }
+.wi1 { background: rgba(244,123,32,0.15); }
+.wi2 { background: rgba(0,188,212,0.15); }
+.wi3 { background: rgba(155,89,182,0.15); }
+.wi4 { background: rgba(233,30,140,0.15); }
+.why-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
+.why-item p  { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
+
+/* CONTACT */
+#contacto { background: var(--dark2); }
+.contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2.5rem; }
+.ccard { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 1.8rem 1rem; text-decoration: none; display: block; transition: transform 0.2s, border-color 0.2s; }
+.ccard:hover { transform: translateY(-4px); }
+.ccard.wa:hover { border-color: #25D366; }
+.ccard.em:hover { border-color: var(--orange); }
+.ccard.ig:hover { border-color: var(--pink); }
+.ccard-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+.ccard h4 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.28); margin-bottom: 0.3rem; }
+.ccard p { font-size: 0.9rem; font-weight: 700; color: white; }
+
+/* FOOTER */
+footer { background: #050505; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; padding: 2.5rem 2rem; }
+.footer-logo { font-family: 'Pacifico', cursive; font-size: 1.8rem; margin-bottom: 0.4rem; background: linear-gradient(135deg, var(--orange), var(--purple), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.footer-sub  { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.18); margin-bottom: 1rem; }
+.footer-copy { font-size: 0.82rem; color: rgba(255,255,255,0.2); }
+
+/* RESPONSIVE */
+@media(max-width: 640px) {
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-logo-sub { display: none; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  section { padding: 4rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-dc">DC</div>
+    <div class="nav-logo-sub">Diseña y Crea Print</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#productos">Productos</a></li>
+    <li><a href="#porque">Nosotros</a></li>
+    <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+    <div class="glow g3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="brand-badge"><span class="dot-live"></span> dc.benjalabs.com</div>
+      <div class="hero-title">
+        <span class="dc-orange">Diseña</span><br>
+        <span style="color:rgba(255,255,255,0.12); font-size:0.6em; display:block; line-height:1;">y</span>
+        <span class="dc-blue">Crea</span>
+        <span class="hero-print">PRINT</span>
+      </div>
+      <div class="hero-tagline">Hacemos realidad lo que puedas imaginar</div>
+      <p class="hero-sub">Lonas, playeras DTF, tazas sublimadas, stickers y mucho más. Impresión de alta calidad con los mejores acabados del mercado.</p>
+      <div class="hero-btns">
+        <a href="#productos" class="btn-primary">Ver productos</a>
+        <a href="#contacto" class="btn-ghost">Pedir cotización</a>
+      </div>
+    </div>
+    <div class="hero-orbit">
+      <div class="orbit-center">🖨️</div>
+      <div class="orbit-item">🎽</div>
+      <div class="orbit-item">☕</div>
+      <div class="orbit-item">🖼️</div>
+      <div class="orbit-item">✂️</div>
+      <div class="orbit-item">⭐</div>
+      <div class="orbit-item">🌈</div>
+    </div>
+  </div>
+</section>
+
+<div class="color-bar"></div>
+
+<section id="productos">
+  <div class="section-header">
+    <div class="stag">Lo que hacemos</div>
+    <h2>Nuestros productos</h2>
+    <p>Trabajamos con las mejores técnicas de impresión para que cada proyecto luzca perfecto y duradero.</p>
+  </div>
+  <div class="products-grid">
+    <div class="pcard c1">
+      <div class="pcard-glow"></div>
+      <span class="pbadge badge-hot">Popular</span>
+      <span class="pcard-icon">🎽</span>
+      <h3>Playeras DTF y sublimación</h3>
+      <p>Impresión directa a la tela con colores vibrantes. Sin límite de colores, diseño completo y acabado premium que dura.</p>
+    </div>
+    <div class="pcard c2">
+      <div class="pcard-glow"></div>
+      <span class="pbadge badge-new">Nuevo</span>
+      <span class="pcard-icon">🖼️</span>
+      <h3>Lonas personalizadas</h3>
+      <p>Perfectas para publicidad, eventos y decoración. Tamaños a la medida, alta resolución y materiales resistentes.</p>
+    </div>
+    <div class="pcard c3">
+      <div class="pcard-glow"></div>
+      <span class="pcard-icon">☕</span>
+      <h3>Tazas sublimadas</h3>
+      <p>El detalle perfecto con tu foto, diseño o logo. Acabado resistente al lavado y colores que no se van.</p>
+    </div>
+    <div class="pcard c4">
+      <div class="pcard-glow"></div>
+      <span class="pbadge badge-top">Top</span>
+      <span class="pcard-icon">✨</span>
+      <h3>Todo en sublimación</h3>
+      <p>Cojines, gorras, mouse pads, platos, porta retratos y más. Si tiene superficie, ¡lo sublimamos!</p>
+    </div>
+    <div class="pcard c5">
+      <div class="pcard-glow"></div>
+      <span class="pcard-icon">🔪</span>
+      <h3>Corte de vinil</h3>
+      <p>Letras, logos y figuras con corte de precisión. Ideal para paredes, vehículos, escaparates y eventos.</p>
+    </div>
+    <div class="pcard c6">
+      <div class="pcard-glow"></div>
+      <span class="pcard-icon">🌟</span>
+      <h3>Stickers con Cricut</h3>
+      <p>Stickers con corte personalizado en cualquier forma. Acabado mate, brillante o transparente — tú decides.</p>
+    </div>
+  </div>
+</section>
+
+<div class="color-bar"></div>
+
+<section id="porque">
+  <div class="section-header">
+    <div class="stag">¿Por qué elegirnos?</div>
+    <h2>Calidad que se nota</h2>
+    <p>Cada pedido lo trabajamos como si fuera el nuestro. Así de simple.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon wi1">🎨</div>
+      <h4>Diseño incluido</h4>
+      <p>¿No tienes diseño? Nosotros te ayudamos. Tu idea, nuestra creatividad al servicio.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon wi2">⚡</div>
+      <h4>Entrega rápida</h4>
+      <p>Cumplimos tiempos sin sacrificar calidad. Tu pedido llega cuando lo necesitas.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon wi3">💎</div>
+      <h4>Alta calidad</h4>
+      <p>Materiales premium y técnicas de última generación en cada producto que hacemos.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon wi4">💬</div>
+      <h4>Trato personal</h4>
+      <p>Atención directa y honesta. Te acompañamos desde el diseño hasta la entrega.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="background: var(--dark2);">
+  <div class="contact-inner">
+    <div class="section-header">
+      <div class="stag">Hablemos</div>
+      <h2>Pide tu cotización</h2>
+      <p>¿Tienes un proyecto en mente? Escríbenos y con gusto te asesoramos sin costo ni compromiso.</p>
+    </div>
+    <div class="contact-grid">
+      <a href="https://wa.me/525587304748" class="ccard wa">
+        <div class="ccard-icon">📱</div>
+        <h4>WhatsApp</h4>
+        <p>55 8730 4748</p>
+      </a>
+      <a href="mailto:hola@benjalabs.com" class="ccard em">
+        <div class="ccard-icon">📧</div>
+        <h4>Correo</h4>
+        <p>hola@benjalabs.com</p>
+      </a>
+      <a href="https://instagram.com/disena_y_crea_print" class="ccard ig">
+        <div class="ccard-icon">📸</div>
+        <h4>Instagram</h4>
+        <p>@disena_y_crea_print</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Diseña y Crea</div>
+  <div class="footer-sub">Print · dc.benjalabs.com</div>
+  <div class="footer-copy">Hacemos realidad lo que puedas imaginar &nbsp;·&nbsp; 2025</div>
+</footer>
+
+</body>
+</html>
