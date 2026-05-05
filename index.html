@@ -31,27 +31,13 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1rem 2.5rem;
+  padding: 0.8rem 2.5rem;
   background: rgba(10,10,10,0.96);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.nav-logo { display: flex; align-items: center; gap: 0.8rem; }
-.nav-logo-img { width: 42px; height: 42px; object-fit: contain; }
-.nav-logo-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.nav-logo-dc {
-  font-family: 'Pacifico', cursive; font-size: 1.1rem;
-  background: linear-gradient(135deg, var(--orange), var(--blue));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.nav-logo-sub {
-  font-size: 0.6rem; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: rgba(255,255,255,0.25);
-}
+.nav-logo { display: flex; align-items: center; gap: 0.6rem; }
+.nav-logo-img { height: 45px; width: auto; object-fit: contain; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   text-decoration: none; color: rgba(255,255,255,0.5);
@@ -92,10 +78,19 @@ nav {
 .dot-live { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: blink 1.8s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-.hero-title { font-family: 'Pacifico', cursive; font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 0.5rem; }
-.dc-orange { color: var(--orange); }
-.dc-blue   { color: var(--blue); }
-.hero-print { font-family: 'Nunito', sans-serif; font-size: 0.42em; font-weight: 900; letter-spacing: 5px; vertical-align: middle; margin-left: 0.4em; color: var(--orange); }
+.hero-title-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-title-logo {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+}
 
 .hero-tagline {
   font-size: clamp(0.9rem, 2vw, 1.15rem); font-weight: 700; letter-spacing: 2px;
@@ -105,9 +100,9 @@ nav {
 }
 .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 2.5rem; max-width: 500px; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-.btn-primary { background: var(--orange); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+.btn-primary { background: var(--orange); color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; cursor: pointer; border: none; }
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 35px rgba(244,123,32,0.4); }
-.btn-ghost { background: transparent; color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
+.btn-ghost { background: transparent; color: white; padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 1rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); transition: border-color 0.2s, color 0.2s, transform 0.2s; display: inline-block; cursor: pointer; }
 .btn-ghost:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-3px); }
 
 /* HERO SHOWCASE */
@@ -154,12 +149,6 @@ section { padding: 5rem 2.5rem; }
 
 /* GALLERY SECTION */
 #galeria { background: var(--dark2); }
-.gallery-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: white;
-}
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -298,68 +287,133 @@ section { padding: 5rem 2.5rem; }
 .why-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: white; }
 .why-item p { font-size: 0.85rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
 
-/* CONTACT */
+/* CONTACT FORM */
 #contacto { background: var(--dark); }
-.contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+.contact-inner { max-width: 800px; margin: 0 auto; }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.2rem;
-  margin-top: 2.5rem;
-}
-
-.ccard {
+.contact-form-wrapper {
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 1.8rem 1rem;
-  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 2.5rem;
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
   display: block;
-  transition: transform 0.2s, border-color 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-
-.ccard:hover { transform: translateY(-4px); }
-.ccard.wa:hover { border-color: #25D366; }
-.ccard.em:hover { border-color: var(--orange); }
-.ccard.ig:hover { border-color: var(--pink); }
-
-.ccard-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
-.ccard h4 {
-  font-size: 0.72rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.28);
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.8rem;
+  color: white;
+  font-size: 0.95rem;
 }
-.ccard p { font-size: 0.9rem; font-weight: 700; color: white; }
 
-.qr-section {
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.07);
+  color: white;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  background: rgba(255,255,255,0.1);
+}
+
+.form-group select option {
+  background: var(--dark);
+  color: white;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+.contact-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.info-item {
+  display: flex;
   align-items: center;
-  margin-top: 3rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 0.8rem;
 }
 
-.qr-box {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: center;
+.info-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(244,123,32,0.2);
+  border-radius: 10px;
 }
 
-.qr-box img { max-width: 100%; height: auto; border-radius: 8px; }
+.info-text h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.2rem;
+}
 
-.qr-text h4 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--teal); }
-.qr-text p { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+.info-text p {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 600;
+}
+
+.info-item a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+
+.info-item a:hover {
+  color: var(--orange);
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--orange), var(--pink));
+  color: white;
+  padding: 1.1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 1.5rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(244,123,32,0.35);
+}
 
 /* FOOTER */
 footer {
@@ -374,7 +428,7 @@ footer {
 }
 
 .footer-logo-img {
-  max-width: 80px;
+  max-width: 100px;
   height: auto;
   margin: 0 auto 1rem;
   display: block;
@@ -403,17 +457,17 @@ footer {
 /* RESPONSIVE */
 @media(max-width: 768px) {
   nav { padding: 0.8rem 1.2rem; }
-  .nav-logo-sub { display: none; }
   .hero { padding: 7rem 1.5rem 4rem; }
   .hero-inner { flex-direction: column; gap: 2rem; }
+  .hero-title-box { flex-direction: column; gap: 1rem; }
   section { padding: 4rem 1.5rem; }
-  .qr-section { grid-template-columns: 1fr; }
+  .contact-form-wrapper { padding: 1.5rem; }
+  .contact-info { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media(max-width: 480px) {
-  .hero-title { font-size: 2rem; }
-  .hero-tagline { font-size: 0.8rem; }
+  .hero-title-logo { height: 80px; }
   .nav-links { gap: 1rem; font-size: 0.75rem; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
@@ -424,9 +478,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="https://files.catbox.moe/70fldf.png" alt="DC Logo" class="nav-logo-img">
-    <div class="nav-logo-text">
-    </div>
+    <img src="https://files.catbox.moe/2pv9qf.png" alt="Diseña y Crea Logo" class="nav-logo-img">
   </div>
   <ul class="nav-links">
     <li><a href="#galeria">Galería</a></li>
@@ -445,12 +497,9 @@ footer {
   </div>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="brand-badge"><span class="dot-live"></span> dc.champi.cool</div>
-      <div class="hero-title">
-        <span class="dc-orange">Diseña</span><br>
-        <span style="color:rgba(255,255,255,0.12); font-size:0.6em; display:block; line-height:1;">y</span>
-        <span class="dc-blue">Crea</span>
-        <span class="hero-print">PRINT</span>
+      <div class="brand-badge"><span class="dot-live"></span> champi.cool</div>
+      <div class="hero-title-box">
+        <img src="https://files.catbox.moe/2pv9qf.png" alt="Diseña y Crea" class="hero-title-logo">
       </div>
       <div class="hero-tagline">Hacemos realidad lo que puedas imaginar</div>
       <p class="hero-sub">Lonas, playeras DTF, tazas sublimadas, stickers con Cricut, corte de vinil y mucho más. Impresión de alta calidad con los mejores acabados.</p>
@@ -632,35 +681,47 @@ footer {
     <div class="section-header">
       <div class="stag">Hablemos</div>
       <h2>Pide tu cotización</h2>
-      <p>¿Tienes un proyecto en mente? Escríbenos y con gusto te asesoramos sin costo ni compromiso.</p>
+      <p>¿Tienes un proyecto en mente? Completa el formulario y te enviaremos el mensaje por WhatsApp.</p>
     </div>
 
-    <div class="contact-grid">
-      <a href="https://wa.me/525587304748" class="ccard wa">
-        <div class="ccard-icon">📱</div>
-        <h4>WhatsApp</h4>
-        <p>55 8730 4748</p>
-      </a>
-      <a href="mailto:hola@champi,cool" class="ccard em">
-        <div class="ccard-icon">📧</div>
-        <h4>Correo</h4>
-        <p>hola@champi.cool</p>
-      </a>
-      <a href="https://instagram.com/disena_y_crea_print" class="ccard ig">
-        <div class="ccard-icon">📸</div>
-        <h4>Instagram</h4>
-        <p>@disena_y_crea_print</p>
-      </a>
-    </div>
+    <div class="contact-form-wrapper">
+      <form id="whatsappForm">
+        <div class="form-group">
+          <label for="producto">¿Qué producto necesitas? *</label>
+          <select id="producto" name="producto" required>
+            <option value="">Selecciona un producto</option>
+            <option value="Lona impresa">Lona impresa</option>
+            <option value="Corte de vinil">Corte de vinil</option>
+            <option value="Playera personalizada">Playera personalizada</option>
+            <option value="Taza sublimada">Taza sublimada</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
 
-    <div class="qr-section">
-      <div class="qr-box">
-        <img src="https://files.catbox.moe/vqwniw.png" alt="QR Instagram">
-      </div>
-      <div class="qr-text">
-        <h4>Síguenos en Instagram</h4>
-        <p>Escanea el código QR o busca <strong>@disena_y_crea_print</strong> para ver más de nuestro trabajo, promociones y sorteos.</p>
-      </div>
+        <div class="form-group">
+          <label for="comentario">Cuéntanos más sobre tu proyecto</label>
+          <textarea id="comentario" name="comentario" placeholder="Describe tu idea, dimensiones, colores, cantidad... ¡Lo que necesites!"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">📱 Enviar por WhatsApp</button>
+
+        <div class="contact-info">
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <h4>Ubicación</h4>
+              <p>Nicolás Romero, Mex</p>
+            </div>
+          </div>
+          <a href="https://instagram.com/disena_y_crea_print" class="info-item">
+            <div class="info-icon">📸</div>
+            <div class="info-text">
+              <h4>Instagram</h4>
+              <p>@disena_y_crea_print</p>
+            </div>
+          </a>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -668,12 +729,32 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo-box">
-    <img src="https://files.catbox.moe/fp3yhy.png" alt="Diseña y Crea Logo" class="footer-logo-img">
-    <div class="footer-logo">Diseña y Crea</div>
-    <div class="footer-sub">Print · champi.cool </div>
+    <img src="https://files.catbox.moe/2pv9qf.png" alt="Diseña y Crea Logo" class="footer-logo-img">
+    <div class="footer-sub">champi.cool</div>
   </div>
-  <div class="footer-copy">Hacemos realidad lo que puedas imaginar &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Cuautitlán Izcalli, México</div>
+  <div class="footer-copy">Hacemos realidad lo que puedas imaginar &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Nicolás Romero, México</div>
 </footer>
+
+<script>
+document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const producto = document.getElementById('producto').value;
+  const comentario = document.getElementById('comentario').value;
+  
+  if (!producto) {
+    alert('Por favor selecciona un producto');
+    return;
+  }
+  
+  const mensaje = `Hola, me gustaría cotizar lo siguiente:%0A%0A📦 Producto: ${encodeURIComponent(producto)}%0A%0A💬 Detalle: ${encodeURIComponent(comentario || 'Sin comentarios adicionales')}%0A%0A¿Cuál sería el costo?`;
+  
+  const numeroWhatsApp = '525587304748';
+  const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+  
+  window.open(urlWhatsApp, '_blank');
+});
+</script>
 
 </body>
 </html>
