@@ -37,7 +37,7 @@ nav {
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .nav-logo { display: flex; align-items: center; gap: 0.6rem; }
-.nav-logo-img { height: 45px; width: auto; object-fit: contain; }
+.nav-logo-img { height: 55px; width: auto; object-fit: contain; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   text-decoration: none; color: rgba(255,255,255,0.5);
@@ -81,15 +81,18 @@ nav {
 .hero-title-box {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 1rem;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .hero-title-logo {
-  height: 120px;
+  height: 300px;
   width: auto;
   object-fit: contain;
+  max-width: 90vw;
 }
 
 .hero-tagline {
@@ -428,7 +431,7 @@ footer {
 }
 
 .footer-logo-img {
-  max-width: 100px;
+  max-width: 150px;
   height: auto;
   margin: 0 auto 1rem;
   display: block;
@@ -467,7 +470,7 @@ footer {
 }
 
 @media(max-width: 480px) {
-  .hero-title-logo { height: 80px; }
+  .hero-title-logo { height: 200px; }
   .nav-links { gap: 1rem; font-size: 0.75rem; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
