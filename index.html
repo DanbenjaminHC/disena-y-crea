@@ -474,6 +474,88 @@ footer {
   .nav-links { gap: 1rem; font-size: 0.75rem; }
   .gallery-grid { grid-template-columns: 1fr; }
 }
+
+/* COTIZADOR */
+#contacto { background: var(--dark2); }
+.cotizador-wrapper { max-width: 800px; margin: 0 auto; }
+.cotizador-container { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 2.5rem; }
+
+.opciones-producto { 
+  animation: slideDown 0.3s ease-out;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.opciones-producto h3 { color: var(--orange); margin-bottom: 1rem; font-size: 1.1rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media(max-width: 640px) { .form-row { grid-template-columns: 1fr; } }
+
+.detalle-calculo {
+  background: rgba(244,123,32,0.05);
+  border-left: 3px solid var(--orange);
+  padding: 1rem;
+  margin-top: 1.2rem;
+  border-radius: 8px;
+}
+
+.detalle-calculo p { margin: 0.5rem 0; font-size: 0.95rem; color: rgba(255,255,255,0.8); }
+.detalle-calculo strong { color: var(--orange); }
+
+.resumen-cotizador {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(244,123,32,0.1) 0%, rgba(41,171,226,0.05) 100%);
+  border: 1px solid rgba(244,123,32,0.2);
+  border-radius: 16px;
+}
+
+.resumen-cotizador h3 { color: white; margin-bottom: 1.5rem; font-size: 1.2rem; }
+
+.resumen-contenido {
+  background: rgba(0,0,0,0.2);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.resumen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.resumen-item:last-child { border-bottom: none; }
+
+.resumen-item strong { color: var(--orange); font-weight: 700; }
+
+.resumen-item.total {
+  padding-top: 1rem;
+  margin-top: 1rem;
+  border-top: 2px solid var(--orange);
+  font-size: 1.2rem;
+  color: white;
+}
+
+.resumen-item.total strong { font-size: 1.5rem; }
+
+.help-text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.4rem;
+  font-style: italic;
+}
 </style>
 </head>
 <body>
@@ -678,53 +760,190 @@ footer {
   </div>
 </section>
 
-<!-- CONTACTO -->
+<!-- COTIZADOR AUTOMATIZADO -->
 <section id="contacto">
   <div class="contact-inner">
     <div class="section-header">
-      <div class="stag">Hablemos</div>
-      <h2>Pide tu cotización</h2>
-      <p>¿Tienes un proyecto en mente? Completa el formulario y te enviaremos el mensaje por WhatsApp.</p>
+      <div class="stag">Cotiza al instante</div>
+      <h2>Calculadora de precios</h2>
+      <p>Selecciona tu producto y opciones. El precio se calcula automáticamente.</p>
     </div>
 
-    <div class="contact-form-wrapper">
-      <form id="whatsappForm">
+    <div class="cotizador-wrapper">
+      <div class="cotizador-container">
+        <!-- SELECTOR DE PRODUCTO -->
         <div class="form-group">
-          <label for="producto">¿Qué producto necesitas? *</label>
-          <select id="producto" name="producto" required>
+          <label for="tipoProducto">🎯 ¿Qué producto necesitas? *</label>
+          <select id="tipoProducto" required>
             <option value="">Selecciona un producto</option>
-            <option value="Lona impresa">Lona impresa</option>
-            <option value="Corte de vinil">Corte de vinil</option>
-            <option value="Playera personalizada">Playera personalizada</option>
-            <option value="Taza sublimada">Taza sublimada</option>
-            <option value="Otros">Otros</option>
+            <option value="lona">📜 Lona Impresa</option>
+            <option value="playera">👕 Playera DTF</option>
+            <option value="taza">☕ Taza Impresa</option>
+            <option value="stickers">✨ Stickers Personalizados</option>
+            <option value="corte-vinil">🔪 Corte de Vinil</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <label for="comentario">Cuéntanos más sobre tu proyecto</label>
-          <textarea id="comentario" name="comentario" placeholder="Describe tu idea, dimensiones, colores, cantidad... ¡Lo que necesites!"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">📱 Enviar por WhatsApp</button>
-
-        <div class="contact-info">
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
-              <h4>Ubicación</h4>
-              <p>Nicolás Romero, Mex</p>
+        <!-- OPCIONES LONA IMPRESA -->
+        <div id="opcionesLona" class="opciones-producto" style="display: none;">
+          <h3>📜 Lona Impresa - $75/m²</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lonaAncho">Ancho (metros):</label>
+              <input type="number" id="lonaAncho" placeholder="2.5" min="0.1" step="0.1" value="1">
+            </div>
+            <div class="form-group">
+              <label for="lonaLargo">Largo (metros):</label>
+              <input type="number" id="lonaLargo" placeholder="1" min="0.1" step="0.1" value="1">
             </div>
           </div>
-          <a href="https://instagram.com/disena_y_crea_print" class="info-item">
-            <div class="info-icon">📸</div>
-            <div class="info-text">
-              <h4>Instagram</h4>
-              <p>@disena_y_crea_print</p>
-            </div>
-          </a>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="lonaOjillos">
+              ¿Incluir ojillos? (Gratis)
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="lonaDiseño">
+              ¿Ya cuentas con diseño? (Si no, +$50 por crear)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Área: <strong id="lonaArea">1.0</strong> m²</p>
+            <p>Precio base: <strong id="lonaPrecioBase">$75.00</strong></p>
+            <p>Diseño: <strong id="lonaPrecioDiseño">$0.00</strong></p>
+          </div>
         </div>
-      </form>
+
+        <!-- OPCIONES PLAYERA -->
+        <div id="opcionesPlayera" class="opciones-producto" style="display: none;">
+          <h3>👕 Playera DTF - $200</h3>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraDiseño">
+              ¿Necesitas diseño? (+$50)
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraDosLados">
+              ¿Imprimir en ambos lados? (+$50)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio base: <strong>$200.00</strong></p>
+            <p>Diseño: <strong id="playeraPrecioDiseño">$0.00</strong></p>
+            <p>Ambos lados: <strong id="playeraPrecioDosLados">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES TAZA -->
+        <div id="opcionesTaza" class="opciones-producto" style="display: none;">
+          <h3>☕ Taza Impresa - $75</h3>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="tazaDiseño">
+              ¿Necesitas diseño? (+$50)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio base: <strong>$75.00</strong></p>
+            <p>Diseño: <strong id="tazaPrecioDiseño">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES STICKERS -->
+        <div id="opcionesStickers" class="opciones-producto" style="display: none;">
+          <h3>✨ Stickers Personalizados</h3>
+          <div class="form-group">
+            <label for="stickerPapel">Tipo de papel:</label>
+            <select id="stickerPapel">
+              <option value="fotografico">📸 Papel Fotográfico Adhesivo A4 - $30</option>
+              <option value="mate">📄 Papel Fotográfico Mate Adhesivo Carta - $20</option>
+              <option value="vinil">🎨 Vinil Impreso A4 - $35</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="stickerCorte">
+              ¿Incluir corte con plotter? (Varía según tamaño)
+            </label>
+            <p class="help-text">El corte se cobra según el tamaño del diseño y cantidad de hojas necesarias.</p>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio papel: <strong id="stickerPrecio">$30.00</strong></p>
+            <p>Corte: <strong id="stickerPrecioCorte">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES CORTE VINIL -->
+        <div id="opcionesCorteVinil" class="opciones-producto" style="display: none;">
+          <h3>🔪 Corte de Vinil - $75/color</h3>
+          <div class="form-group">
+            <label for="corteCantidadColores">Cantidad de colores:</label>
+            <select id="corteCantidadColores">
+              <option value="1">1 color (máximo 30x30 cm)</option>
+              <option value="2">2 colores (+$75)</option>
+              <option value="3">3 colores (+$150)</option>
+              <option value="4">4 colores (+$225)</option>
+              <option value="5">5 colores (+$300)</option>
+            </select>
+            <p class="help-text">Tamaño máximo: 30x30 cm por color. Incluye cualquier patrón.</p>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio total: <strong id="cortePrecio">$75.00</strong></p>
+          </div>
+        </div>
+
+        <!-- RESUMEN Y ENVÍO -->
+        <div class="resumen-cotizador">
+          <h3>💰 Resumen de tu cotización</h3>
+          <div class="resumen-contenido">
+            <div class="resumen-item">
+              <span>Producto:</span>
+              <strong id="resumenProducto">-</strong>
+            </div>
+            <div class="resumen-item">
+              <span>Opciones seleccionadas:</span>
+              <strong id="resumenOpciones">-</strong>
+            </div>
+            <div class="resumen-item total">
+              <span>TOTAL:</span>
+              <strong id="totalPrecio">$0.00</strong>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="envioADomicilio">
+              ¿Envío a domicilio? (+$50)
+            </label>
+            <p class="help-text" id="mensajeEntrega">Las entregas se realizan en TownCenter Nicolás Romero</p>
+          </div>
+
+          <button id="btnWhatsApp" class="submit-btn" style="cursor: not-allowed; opacity: 0.5;">
+            📱 Selecciona un producto
+          </button>
+
+          <div class="contact-info">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-text">
+                <h4>Ubicación</h4>
+                <p>TownCenter Nicolás Romero, Mex</p>
+              </div>
+            </div>
+            <a href="https://instagram.com/disena_y_crea_print" class="info-item">
+              <div class="info-icon">📸</div>
+              <div class="info-text">
+                <h4>Instagram</h4>
+                <p>@disena_y_crea_print</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -739,24 +958,293 @@ footer {
 </footer>
 
 <script>
-document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const producto = document.getElementById('producto').value;
-  const comentario = document.getElementById('comentario').value;
-  
-  if (!producto) {
-    alert('Por favor selecciona un producto');
-    return;
+// COTIZADOR AUTOMATIZADO
+class Cotizador {
+  constructor() {
+    this.producto = null;
+    this.detalles = {};
+    this.precioTotal = 0;
+    this.init();
   }
-  
-  const mensaje = `Hola, me gustaría cotizar lo siguiente:%0A%0A📦 Producto: ${encodeURIComponent(producto)}%0A%0A💬 Detalle: ${encodeURIComponent(comentario || 'Sin comentarios adicionales')}%0A%0A¿Cuál sería el costo?`;
-  
-  const numeroWhatsApp = '525587304748';
-  const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
-  
-  window.open(urlWhatsApp, '_blank');
+
+  init() {
+    document.getElementById('tipoProducto').addEventListener('change', (e) => this.cambiarProducto(e.target.value));
+    document.getElementById('btnWhatsApp').addEventListener('click', () => this.enviarWhatsApp());
+
+    // Lona
+    document.getElementById('lonaAncho').addEventListener('input', () => this.calcularLona());
+    document.getElementById('lonaLargo').addEventListener('input', () => this.calcularLona());
+    document.getElementById('lonaOjillos').addEventListener('change', () => this.calcularLona());
+    document.getElementById('lonaDiseño').addEventListener('change', () => this.calcularLona());
+
+    // Playera
+    document.getElementById('playeraDiseño').addEventListener('change', () => this.calcularPlayera());
+    document.getElementById('playeraDosLados').addEventListener('change', () => this.calcularPlayera());
+
+    // Taza
+    document.getElementById('tazaDiseño').addEventListener('change', () => this.calcularTaza());
+
+    // Stickers
+    document.getElementById('stickerPapel').addEventListener('change', () => this.calcularStickers());
+    document.getElementById('stickerCorte').addEventListener('change', () => this.calcularStickers());
+
+    // Corte vinil
+    document.getElementById('corteCantidadColores').addEventListener('change', () => this.calcularCorteVinil());
+
+    // Envío
+    document.getElementById('envioADomicilio').addEventListener('change', () => this.actualizarTotal());
+  }
+
+  cambiarProducto(tipo) {
+    document.querySelectorAll('.opciones-producto').forEach(el => el.style.display = 'none');
+    document.getElementById('resumenProducto').textContent = '-';
+    document.getElementById('resumenOpciones').textContent = '-';
+    
+    const btn = document.getElementById('btnWhatsApp');
+    btn.style.cursor = 'not-allowed';
+    btn.style.opacity = '0.5';
+    btn.textContent = '📱 Selecciona un producto';
+
+    if (tipo === '') return;
+
+    this.producto = tipo;
+    this.detalles = {};
+
+    switch(tipo) {
+      case 'lona':
+        document.getElementById('opcionesLona').style.display = 'block';
+        this.calcularLona();
+        break;
+      case 'playera':
+        document.getElementById('opcionesPlayera').style.display = 'block';
+        this.calcularPlayera();
+        break;
+      case 'taza':
+        document.getElementById('opcionesTaza').style.display = 'block';
+        this.calcularTaza();
+        break;
+      case 'stickers':
+        document.getElementById('opcionesStickers').style.display = 'block';
+        this.calcularStickers();
+        break;
+      case 'corte-vinil':
+        document.getElementById('opcionesCorteVinil').style.display = 'block';
+        this.calcularCorteVinil();
+        break;
+    }
+
+    btn.style.cursor = 'pointer';
+    btn.style.opacity = '1';
+    btn.textContent = '📱 Enviar por WhatsApp';
+  }
+
+  calcularLona() {
+    const ancho = parseFloat(document.getElementById('lonaAncho').value) || 0;
+    const largo = parseFloat(document.getElementById('lonaLargo').value) || 0;
+    const ojillos = document.getElementById('lonaOjillos').checked;
+    const conDiseño = document.getElementById('lonaDiseño').checked;
+
+    const area = ancho * largo;
+    const precioBase = area * 75;
+    const precioDiseño = !conDiseño ? 50 : 0; // Si NO tiene diseño, se cobra $50
+    const total = precioBase + precioDiseño;
+
+    document.getElementById('lonaArea').textContent = area.toFixed(2);
+    document.getElementById('lonaPrecioBase').textContent = `$${precioBase.toFixed(2)}`;
+    document.getElementById('lonaPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Lona Impresa',
+      dimensiones: `${ancho}m x ${largo}m`,
+      area: area.toFixed(2),
+      ojillos: ojillos ? 'Sí (incluido)' : 'No',
+      diseño: conDiseño ? 'Ya lo tengo' : 'Necesito que lo hagan (+$50)',
+      precioBase: precioBase.toFixed(2),
+      precioDiseño: precioDiseño.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularPlayera() {
+    const diseño = document.getElementById('playeraDiseño').checked;
+    const dosLados = document.getElementById('playeraDosLados').checked;
+
+    const precioBase = 200;
+    const precioDiseño = diseño ? 50 : 0;
+    const precioDosLados = dosLados ? 50 : 0;
+    const total = precioBase + precioDiseño + precioDosLados;
+
+    document.getElementById('playeraPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+    document.getElementById('playeraPrecioDosLados').textContent = `$${precioDosLados.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Playera DTF',
+      diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
+      dosLados: dosLados ? 'Sí (+$50)' : 'No',
+      precioBase: '200.00',
+      precioDiseño: precioDiseño.toFixed(2),
+      precioDosLados: precioDosLados.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularTaza() {
+    const diseño = document.getElementById('tazaDiseño').checked;
+
+    const precioBase = 75;
+    const precioDiseño = diseño ? 50 : 0;
+    const total = precioBase + precioDiseño;
+
+    document.getElementById('tazaPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Taza Impresa',
+      diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
+      precioBase: '75.00',
+      precioDiseño: precioDiseño.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularStickers() {
+    const papel = document.getElementById('stickerPapel').value;
+    const corte = document.getElementById('stickerCorte').checked;
+
+    const precios = {
+      fotografico: 30,
+      mate: 20,
+      vinil: 35
+    };
+
+    const precioBase = precios[papel];
+    const precioCorte = corte ? 0 : 0; // Se cobra según tamaño
+    const total = precioBase + precioCorte;
+
+    const papeles = {
+      fotografico: 'Papel Fotográfico Adhesivo A4',
+      mate: 'Papel Fotográfico Mate Carta',
+      vinil: 'Vinil Impreso A4'
+    };
+
+    document.getElementById('stickerPrecio').textContent = `$${precioBase.toFixed(2)}`;
+    document.getElementById('stickerPrecioCorte').textContent = corte ? 'Según tamaño' : '$0.00';
+
+    this.detalles = {
+      nombre: 'Stickers Personalizados',
+      papel: papeles[papel],
+      corte: corte ? 'Sí (se cotiza por tamaño)' : 'No',
+      precioPapel: precioBase.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularCorteVinil() {
+    const colores = parseInt(document.getElementById('corteCantidadColores').value);
+    const total = 75 * colores;
+
+    document.getElementById('cortePrecio').textContent = `$${total.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Corte de Vinil',
+      colores: colores,
+      precioTotal: total.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  actualizarResumen() {
+    const envio = document.getElementById('envioADomicilio').checked ? 50 : 0;
+    const totalConEnvio = this.precioTotal + envio;
+
+    document.getElementById('resumenProducto').textContent = this.detalles.nombre || '-';
+    
+    let opciones = Object.entries(this.detalles)
+      .filter(([key]) => key !== 'nombre' && key !== 'precioBase' && !key.includes('Precio') && !key.includes('precio'))
+      .map(([key, value]) => `${key}: ${value}`)
+      .join(' • ');
+
+    if (!opciones) opciones = 'Opciones estándar';
+    document.getElementById('resumenOpciones').textContent = opciones;
+    
+    if (envio > 0) {
+      document.getElementById('mensajeEntrega').textContent = 'Envío a domicilio: +$50';
+    } else {
+      document.getElementById('mensajeEntrega').textContent = 'Retiro en TownCenter Nicolás Romero';
+    }
+
+    document.getElementById('totalPrecio').textContent = `$${totalConEnvio.toFixed(2)}`;
+  }
+
+  actualizarTotal() {
+    this.actualizarResumen();
+  }
+
+  enviarWhatsApp() {
+    if (!this.producto) return;
+
+    const envio = document.getElementById('envioADomicilio').checked;
+    const totalPrecio = document.getElementById('totalPrecio').textContent;
+
+    let mensaje = `Hola, me interesa cotizar lo siguiente:%0A%0A`;
+    mensaje += `📦 *Producto:* ${this.detalles.nombre}%0A`;
+
+    // Agregar detalles específicos del producto
+    if (this.producto === 'lona') {
+      mensaje += `📐 *Dimensiones:* ${this.detalles.dimensiones}%0A`;
+      mensaje += `📏 *Área:* ${this.detalles.area} m²%0A`;
+      mensaje += `🎯 *Ojillos:* ${this.detalles.ojillos}%0A`;
+    } else if (this.producto === 'playera') {
+      mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
+      mensaje += `👕 *Ambos lados:* ${this.detalles.dosLados}%0A`;
+    } else if (this.producto === 'taza') {
+      mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
+    } else if (this.producto === 'stickers') {
+      mensaje += `📄 *Papel:* ${this.detalles.papel}%0A`;
+      mensaje += `✂️ *Corte:* ${this.detalles.corte}%0A`;
+    } else if (this.producto === 'corte-vinil') {
+      mensaje += `🌈 *Colores:* ${this.detalles.colores}%0A`;
+    }
+
+    mensaje += `%0A💰 *Precio estimado:* ${totalPrecio}%0A`;
+    mensaje += `🚚 *Entrega:* ${envio ? 'Domicilio (+$50)' : 'Retiro en TownCenter'}%0A`;
+    mensaje += `%0A¿Cuál sería el costo final considerando estos detalles?`;
+
+    const numeroWhatsApp = '525587304748';
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+
+    window.open(urlWhatsApp, '_blank');
+  }
+}
+
+// Inicializar cotizador cuando el documento está listo
+document.addEventListener('DOMContentLoaded', () => {
+  new Cotizador();
 });
+
+// Script antiguo de contacto (mantener para compatibilidad)
+const oldForm = document.getElementById('whatsappForm');
+if (oldForm) {
+  oldForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const producto = document.getElementById('producto').value;
+    const comentario = document.getElementById('comentario').value;
+    if (!producto) { alert('Por favor selecciona un producto'); return; }
+    const mensaje = `Hola, me gustaría cotizar lo siguiente:%0A%0A📦 Producto: ${encodeURIComponent(producto)}%0A%0A💬 Detalle: ${encodeURIComponent(comentario || 'Sin comentarios adicionales')}%0A%0A¿Cuál sería el costo?`;
+    const numeroWhatsApp = '525587304748';
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensaje}`;
+    window.open(urlWhatsApp, '_blank');
+  });
+}
 </script>
 
 </body>
