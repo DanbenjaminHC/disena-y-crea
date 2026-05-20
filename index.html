@@ -777,10 +777,12 @@ footer {
           <select id="tipoProducto" required>
             <option value="">Selecciona un producto</option>
             <option value="lona">📜 Lona Impresa</option>
-            <option value="playera">👕 Playera DTF</option>
+            <option value="playera-dtf">👕 Playera DTF (100% algodón)</option>
+            <option value="playera-sublimacion">👕 Playera Sublimación</option>
             <option value="taza">☕ Taza Impresa</option>
             <option value="stickers">✨ Stickers Personalizados</option>
             <option value="corte-vinil">🔪 Corte de Vinil</option>
+            <option value="custom">🎨 Cotización Personalizada</option>
           </select>
         </div>
 
@@ -816,9 +818,10 @@ footer {
           </div>
         </div>
 
-        <!-- OPCIONES PLAYERA -->
+        <!-- OPCIONES PLAYERA DTF -->
         <div id="opcionesPlayera" class="opciones-producto" style="display: none;">
-          <h3>👕 Playera DTF - $200</h3>
+          <h3>👕 Playera DTF - 100% Algodón - $300</h3>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Playeras 100% algodón • Cualquier color disponible</p>
           <div class="form-group">
             <label>
               <input type="checkbox" id="playeraDiseño">
@@ -832,9 +835,74 @@ footer {
             </label>
           </div>
           <div class="detalle-calculo">
-            <p>Precio base: <strong>$200.00</strong></p>
+            <p>Precio base: <strong>$300.00</strong></p>
             <p>Diseño: <strong id="playeraPrecioDiseño">$0.00</strong></p>
             <p>Ambos lados: <strong id="playeraPrecioDosLados">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES PLAYERA DTF (nueva) -->
+        <div id="opcionesPlayeraDTF" class="opciones-producto" style="display: none;">
+          <h3>👕 Playera DTF - 100% Algodón - $300</h3>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">Playeras 100% algodón • Cualquier color disponible</p>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraDTFDiseño">
+              ¿Necesitas diseño? (+$50)
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraDTFDosLados">
+              ¿Imprimir en ambos lados? (+$50)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio base: <strong>$300.00</strong></p>
+            <p>Diseño: <strong id="playeraDTFPrecioDiseño">$0.00</strong></p>
+            <p>Ambos lados: <strong id="playeraDTFPrecioDosLados">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES PLAYERA SUBLIMACIÓN -->
+        <div id="opcionesPlayeraSublimacion" class="opciones-producto" style="display: none;">
+          <h3>👕 Playera Sublimación - $200</h3>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraSublimacionDiseño">
+              ¿Necesitas diseño? (+$50)
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="playeraSublimacionDosLados">
+              ¿Imprimir en ambos lados? (+$50)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio base: <strong>$200.00</strong></p>
+            <p>Diseño: <strong id="playeraSublimacionPrecioDiseño">$0.00</strong></p>
+            <p>Ambos lados: <strong id="playeraSublimacionPrecioDosLados">$0.00</strong></p>
+          </div>
+        </div>
+
+        <!-- OPCIONES COTIZACIÓN PERSONALIZADA -->
+        <div id="opcionesCustom" class="opciones-producto" style="display: none;">
+          <h3>🎨 Cotización Personalizada - A cotizar</h3>
+          <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-bottom: 1rem;">"Si lo puedes imaginar, lo puedes imprimir"</p>
+          <div class="form-group">
+            <label for="customIdea">¿Cuál es tu idea? *</label>
+            <textarea id="customIdea" placeholder="Describe lo que quieres imprimir (sublimación en bolsas, globos, etc.)" style="min-height: 100px; width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.07); color: white; font-family: 'Nunito', sans-serif;" required></textarea>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="customDiseño">
+              ¿Necesitas diseño? (+$50)
+            </label>
+          </div>
+          <div class="detalle-calculo">
+            <p>Precio base: <strong>A cotizar</strong></p>
+            <p>Diseño: <strong id="customPrecioDiseño">$0.00</strong></p>
           </div>
         </div>
 
@@ -919,7 +987,7 @@ footer {
               <input type="checkbox" id="envioADomicilio">
               ¿Envío a domicilio? (+$50)
             </label>
-            <p class="help-text" id="mensajeEntrega">Las entregas se realizan en TownCenter Nicolás Romero</p>
+            <p class="help-text" id="mensajeEntrega">Las entregas se realizan en Town Center Nicolás Romero</p>
           </div>
 
           <button id="btnWhatsApp" class="submit-btn" style="cursor: not-allowed; opacity: 0.5;">
@@ -931,7 +999,7 @@ footer {
               <div class="info-icon">📍</div>
               <div class="info-text">
                 <h4>Ubicación</h4>
-                <p>TownCenter Nicolás Romero, Mex</p>
+                <p>Town Center Nicolás Romero, Mex</p>
               </div>
             </div>
             <a href="https://instagram.com/disena_y_crea_print" class="info-item">
@@ -954,7 +1022,7 @@ footer {
     <img src="https://files.catbox.moe/2pv9qf.png" alt="Diseña y Crea Logo" class="footer-logo-img">
     <div class="footer-sub">champi.cool</div>
   </div>
-  <div class="footer-copy">Hacemos realidad lo que puedas imaginar &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Nicolás Romero, México</div>
+  <div class="footer-copy">Hacemos realidad lo que puedas imaginar &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Nicolás Romero, México</div>
 </footer>
 
 <script>
@@ -977,9 +1045,23 @@ class Cotizador {
     document.getElementById('lonaOjillos').addEventListener('change', () => this.calcularLona());
     document.getElementById('lonaDiseño').addEventListener('change', () => this.calcularLona());
 
-    // Playera
-    document.getElementById('playeraDiseño').addEventListener('change', () => this.calcularPlayera());
-    document.getElementById('playeraDosLados').addEventListener('change', () => this.calcularPlayera());
+    // Playera DTF
+    document.getElementById('playeraDTFDiseño').addEventListener('change', () => this.calcularPlayeraDTF());
+    document.getElementById('playeraDTFDosLados').addEventListener('change', () => this.calcularPlayeraDTF());
+
+    // Playera Sublimación
+    document.getElementById('playeraSublimacionDiseño').addEventListener('change', () => this.calcularPlayeraSublimacion());
+    document.getElementById('playeraSublimacionDosLados').addEventListener('change', () => this.calcularPlayeraSublimacion());
+
+    // Custom
+    document.getElementById('customIdea').addEventListener('input', () => this.calcularCustom());
+    document.getElementById('customDiseño').addEventListener('change', () => this.calcularCustom());
+
+    // Playera (antigua, mantener para compatibilidad)
+    const playeraDiseño = document.getElementById('playeraDiseño');
+    const playeraDosLados = document.getElementById('playeraDosLados');
+    if (playeraDiseño) playeraDiseño.addEventListener('change', () => this.calcularPlayera());
+    if (playeraDosLados) playeraDosLados.addEventListener('change', () => this.calcularPlayera());
 
     // Taza
     document.getElementById('tazaDiseño').addEventListener('change', () => this.calcularTaza());
@@ -1015,9 +1097,17 @@ class Cotizador {
         document.getElementById('opcionesLona').style.display = 'block';
         this.calcularLona();
         break;
-      case 'playera':
-        document.getElementById('opcionesPlayera').style.display = 'block';
-        this.calcularPlayera();
+      case 'playera-dtf':
+        document.getElementById('opcionesPlayeraDTF').style.display = 'block';
+        this.calcularPlayeraDTF();
+        break;
+      case 'playera-sublimacion':
+        document.getElementById('opcionesPlayeraSublimacion').style.display = 'block';
+        this.calcularPlayeraSublimacion();
+        break;
+      case 'custom':
+        document.getElementById('opcionesCustom').style.display = 'block';
+        this.calcularCustom();
         break;
       case 'taza':
         document.getElementById('opcionesTaza').style.display = 'block';
@@ -1067,11 +1157,84 @@ class Cotizador {
     this.actualizarResumen();
   }
 
+  calcularPlayeraDTF() {
+    const diseño = document.getElementById('playeraDTFDiseño').checked;
+    const dosLados = document.getElementById('playeraDTFDosLados').checked;
+
+    const precioBase = 300;
+    const precioDiseño = diseño ? 50 : 0;
+    const precioDosLados = dosLados ? 50 : 0;
+    const total = precioBase + precioDiseño + precioDosLados;
+
+    document.getElementById('playeraDTFPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+    document.getElementById('playeraDTFPrecioDosLados').textContent = `$${precioDosLados.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Playera DTF - 100% algodón',
+      descripcion: 'Playeras 100% algodón - Cualquier color',
+      diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
+      dosLados: dosLados ? 'Sí (+$50)' : 'No',
+      precioBase: '300.00',
+      precioDiseño: precioDiseño.toFixed(2),
+      precioDosLados: precioDosLados.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularPlayeraSublimacion() {
+    const diseño = document.getElementById('playeraSublimacionDiseño').checked;
+    const dosLados = document.getElementById('playeraSublimacionDosLados').checked;
+
+    const precioBase = 200;
+    const precioDiseño = diseño ? 50 : 0;
+    const precioDosLados = dosLados ? 50 : 0;
+    const total = precioBase + precioDiseño + precioDosLados;
+
+    document.getElementById('playeraSublimacionPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+    document.getElementById('playeraSublimacionPrecioDosLados').textContent = `$${precioDosLados.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Playera Sublimación',
+      diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
+      dosLados: dosLados ? 'Sí (+$50)' : 'No',
+      precioBase: '200.00',
+      precioDiseño: precioDiseño.toFixed(2),
+      precioDosLados: precioDosLados.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
+  calcularCustom() {
+    const diseño = document.getElementById('customDiseño').checked;
+    const idea = document.getElementById('customIdea').value || 'Por especificar';
+
+    const precioBase = 100; // Precio base para cotización personalizada
+    const precioDiseño = diseño ? 50 : 0;
+    const total = precioBase + precioDiseño;
+
+    document.getElementById('customPrecioDiseño').textContent = `$${precioDiseño.toFixed(2)}`;
+
+    this.detalles = {
+      nombre: 'Producto Personalizado',
+      idea: idea,
+      diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
+      precioBase: '100.00 (a cotizar)',
+      precioDiseño: precioDiseño.toFixed(2)
+    };
+
+    this.precioTotal = total;
+    this.actualizarResumen();
+  }
+
   calcularPlayera() {
     const diseño = document.getElementById('playeraDiseño').checked;
     const dosLados = document.getElementById('playeraDosLados').checked;
 
-    const precioBase = 200;
+    const precioBase = 300;
     const precioDiseño = diseño ? 50 : 0;
     const precioDosLados = dosLados ? 50 : 0;
     const total = precioBase + precioDiseño + precioDosLados;
@@ -1080,10 +1243,11 @@ class Cotizador {
     document.getElementById('playeraPrecioDosLados').textContent = `$${precioDosLados.toFixed(2)}`;
 
     this.detalles = {
-      nombre: 'Playera DTF',
+      nombre: 'Playera DTF - 100% algodón',
+      descripcion: 'Playeras 100% algodón - Cualquier color',
       diseño: diseño ? 'Incluido (+$50)' : 'No incluido',
       dosLados: dosLados ? 'Sí (+$50)' : 'No',
-      precioBase: '200.00',
+      precioBase: '300.00',
       precioDiseño: precioDiseño.toFixed(2),
       precioDosLados: precioDosLados.toFixed(2)
     };
@@ -1179,7 +1343,7 @@ class Cotizador {
     if (envio > 0) {
       document.getElementById('mensajeEntrega').textContent = 'Envío a domicilio: +$50';
     } else {
-      document.getElementById('mensajeEntrega').textContent = 'Retiro en TownCenter Nicolás Romero';
+      document.getElementById('mensajeEntrega').innerHTML = '<a href="https://maps.app.goo.gl/pc1h4wxkLBfuF8PY7" target="_blank" style="color: var(--teal); text-decoration: none;">📍 Retiro en Town Center Nicolás Romero (Ver en Maps)</a>';
     }
 
     document.getElementById('totalPrecio').textContent = `$${totalConEnvio.toFixed(2)}`;
@@ -1203,9 +1367,16 @@ class Cotizador {
       mensaje += `📐 *Dimensiones:* ${this.detalles.dimensiones}%0A`;
       mensaje += `📏 *Área:* ${this.detalles.area} m²%0A`;
       mensaje += `🎯 *Ojillos:* ${this.detalles.ojillos}%0A`;
-    } else if (this.producto === 'playera') {
+    } else if (this.producto === 'playera-dtf' || this.producto === 'playera') {
+      mensaje += `👕 *Descripción:* Playeras 100% algodón - Cualquier color%0A`;
       mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
       mensaje += `👕 *Ambos lados:* ${this.detalles.dosLados}%0A`;
+    } else if (this.producto === 'playera-sublimacion') {
+      mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
+      mensaje += `👕 *Ambos lados:* ${this.detalles.dosLados}%0A`;
+    } else if (this.producto === 'custom') {
+      mensaje += `💡 *Tu idea:* ${encodeURIComponent(this.detalles.idea)}%0A`;
+      mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
     } else if (this.producto === 'taza') {
       mensaje += `🎨 *Diseño:* ${this.detalles.diseño}%0A`;
     } else if (this.producto === 'stickers') {
@@ -1216,7 +1387,7 @@ class Cotizador {
     }
 
     mensaje += `%0A💰 *Precio estimado:* ${totalPrecio}%0A`;
-    mensaje += `🚚 *Entrega:* ${envio ? 'Domicilio (+$50)' : 'Retiro en TownCenter'}%0A`;
+    mensaje += `🚚 *Entrega:* ${envio ? 'Domicilio (+$50)' : 'Retiro en Town Center (https://maps.app.goo.gl/pc1h4wxkLBfuF8PY7)'}%0A`;
     mensaje += `%0A¿Cuál sería el costo final considerando estos detalles?`;
 
     const numeroWhatsApp = '525587304748';
