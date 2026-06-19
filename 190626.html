@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Recordatorio Especial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .contenedor-juego {
+            text-align: center;
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            max-width: 90%;
+            width: 650px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ff6b81;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #cccccc;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        #miVideo {
+            display: none;
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+            background-color: #000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .btn-juego {
+            background-color: #ff4757;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .btn-juego:hover {
+            background-color: #ff6b81;
+            transform: translateY(-2px);
+        }
+
+        .btn-juego:disabled {
+            background-color: #555555 !important;
+            color: #aaaaaa;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor-juego">
+    <h1>un recordatorio de lo lindo que la paso contigo</h1>
+    <p>Este video solo se podrá reproducir una vez. ve por palomitas ;)</p>
+    
+    <button id="btnControl" class="btn-juego">Ver video</button>
+
+    <video id="miVideo">
+        <source src="https://litter.catbox.moe/305nb8.mp4" type="video/mp4">
+        Tu navegador no soporta el formato de video o el archivo no es público.
+    </video>
+</div>
+
+<script>
+    const video = document.getElementById('miVideo');
+    const boton = document.getElementById('btnControl');
+    let yaTermino = false;
+
+    boton.addEventListener('click', () => {
+        if (yaTermino) return;
+
+        if (video.style.display === 'none' || video.style.display === '') {
+            video.style.display = 'block';
+        }
+
+        if (video.paused) {
+            // Intentar reproducir y capturar posibles errores de carga
+            video.play().then(() => {
+                boton.textContent = "Pausar video";
+                boton.style.backgroundColor = "#ffa502";
+            }).catch(error => {
+                alert("Error al cargar el video. Por favor, asegúrate de que el archivo en Google Drive sea público (Cualquier persona con el enlace).");
+                console.error("Error de reproducción:", error);
+            });
+        } else {
+            video.pause();
+            boton.textContent = "Reanudar video";
+            boton.style.backgroundColor = "#2ed573";
+        }
+    });
+
+    video.addEventListener('ended', () => {
+        yaTermino = true;
+        video.style.display = 'none';
+        video.remove();
+        
+        boton.textContent = "Video finalizado ❤️";
+        boton.disabled = true;
+    });
+</script>
+
+</body>
+</html>
